@@ -24,7 +24,7 @@ phthon3 interact_with_kaleido.py
 👤 **Yongchang He**
 
 * Website: https://dev.to/yongchanghe
-* Twitter: [@Yongchang He](https://twitter.com/YongchangHe)
+* Twitter: [@Yongchang He](https://twitter.com/Yongchanghe)
 * Github: [@hyc0812](https://github.com/hyc0812)
 
 ## Show your support
@@ -34,7 +34,7 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2022 [Yongchang He](https://github.com/hyc0812).<br />
-This project is [MIThttps://github.com/hyc0812/Interact__with__Kaleido__python__version/blob/master/LICENSE](https://github.com/hyc0812/Interact_with_Kaleido_python_version/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/hyc0812/Interact_with_Kaleido_python_version/blob/master/LICENSE) licensed.
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
