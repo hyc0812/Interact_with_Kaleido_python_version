@@ -5,7 +5,7 @@
     <img alt="License: MIThttps://github.com/hyc0812/Interact__with__Kaleido__python__version/blob/master/LICENSE" src="https://img.shields.io/badge/License-MIThttps://github.com/hyc0812/Interact__with__Kaleido__python__version/blob/master/LICENSE-yellow.svg" />
   </a>
   <a href="https://twitter.com/Yongchang He" target="_blank">
-    <img alt="Twitter: Yongchang He" src="https://img.shields.io/twitter/follow/Yongchang He.svg?style=social" />
+    <img alt="Twitter: Yongchang He" src="https://img.shields.io/twitter/follow/Yongchanghe.svg?style=social" />
   </a>
 </p>
 
