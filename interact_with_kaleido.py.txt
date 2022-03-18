@@ -1,0 +1,122 @@
+from textwrap import indent
+import requests
+import json
+from random import randrange
+
+# Node1 information
+node1Header = {"Content-Type": "application/json",
+               "accept": "application/json",
+               "Authorization": "Basic dTB3ODR1Y2Z4czpwTTFVSHlVQ2ZzM0x4R2xkMkZiaEV6Y2NkTkJmcjlZb1NTNlBXOGdDLTR3",
+               # Signing address deployed the contract
+               "x-kaleido-from": "0x0A14954680Ed13ae3Ddf2B2f31Be1721Ae5A53f3",
+               "x-kaleido-sync": "true",
+              }
+
+# Node2 information
+node2Header = {"Content-Type": "application/json",
+               "accept": "application/json",
+               "Authorization": "Basic dTB3ODR1Y2Z4czpwTTFVSHlVQ2ZzM0x4R2xkMkZiaEV6Y2NkTkJmcjlZb1NTNlBXOGdDLTR3",
+               # Signing address deployed the contract
+               "x-kaleido-from": "0x46C620b0559c8aD8320d552dcD0e56b15da42d4b",
+               "x-kaleido-sync": "true",
+              }
+
+
+# Base URI 
+baseURI = "https://u0z109b1m2-u0e6xl8ne0-connect.us0-aws.kaleido.io/instances/sandra" 
+
+
+# Contract Address
+address='0xb1f0184e929938ca14f69c83278fd5611d2d2d6b'
+
+
+# Application URI 
+appURI  = baseURI + address
+
+
+# URI will be used in request
+getRouteURI = baseURI + "/get"
+postRouteURI = baseURI + "/set"
+
+
+# Generate a number which will be used in transaction, it will be a random number form 0~99  
+# Based on the smart contract that have been upload to Kaleido
+tx={"x": str(randrange(99)) }
+
+
+# send a post request /set, which will make a transaction between nodes
+response1 = requests.post(postRouteURI, json=tx, headers=node1Header)
+
+
+# Result printing
+
+print("\n")
+print("-------------------------------------")
+print("\n")
+print("         Transaction Succeed         ")
+print("\n")
+
+
+# if transaction succeed, print out the transaction status (/set)
+if (response1.status_code == 200 or response1.status_code == 201):
+  print("------ /set result from Node 1------")
+  print("\n")
+  print ("TimeElapsed: ", response1.json()['headers']['timeElapsed'])
+  print ("GasUsed:     ", response1.json()['gasUsed'])
+  print ("From:        ", response1.json()['from'])
+  print ("To:          ", response1.json()['to'])
+  print ("BlockNumber: ", response1.json()['blockNumber'])
+  print ("Type:        ", response1.json()['headers']['type'])
+  print("\n")
+
+
+
+# send a get request to read the transaction from node 1
+response2 = requests.get(getRouteURI, headers=node1Header)
+
+# if succeed, print out the transaction status (/get)
+if (response2.status_code == 200 or response2.status_code == 201):
+  print("------ /get result from Node 1 -----")
+  print("\n")
+  print(json.dumps(response2.json(), indent=4, sort_keys=True))
+  print("\n")
+
+
+
+
+# send a get request to read the transaction from node 2
+response3 = requests.get(getRouteURI, headers=node2Header)
+
+# if succeed, print out the transaction status (/get)
+if (response3.status_code == 200 or response3.status_code == 201):
+  print("------ /get result from Node 2 -----")
+  print("\n")
+  print(json.dumps(response2.json(), indent=4, sort_keys=True))
+  print("\n")
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------
+# Rescources from Sam
+
+#if (response.status_code == 200 ):
+#  print(response.json())
+# Here we run a post request 100 times with a random transaction number
+# Then print the time it took to commit the transaction
+# We'll post the transaction to node1 and read the transaction from node2
+# for x in range(100):
+#   tx={"x": str(randrange(99)) }
+#   # Send a post request
+#   response = requests.post(postRouteURI, json=tx, headers=node1Header)
+#   # Validate the response code
+#   if (response.status_code == 200 or response.status_code == 201):
+#     # Uncomment this if you would like to see the transaction response
+#     #print (json.dumps(response.json(), indent=4, sort_keys=True))
+#     # Print the time it took from the elapse time from the response header
+#     print (response.json()['headers']['timeElapsed'])
+#   # If you would like to see the response of the get request, 
+#   # uncomment the below section of the code.
